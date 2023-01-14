@@ -12,7 +12,7 @@ def caculate_time(hour, minute, delta):
 
 # 셔틀콕 기준 배차 간격, 시간, 행선
 timetable_interval_weekdays = [(7, 50, 21, 50, 30, "C", "Dormitory")]
-timetable_interval_weekends = [(8, 50, 21, 50, 30, "C", "Dormitory")]
+timetable_interval_weekends = [(8, 50, 21, 50, 60, "C", "Dormitory")]
 
 timetable_weekdays = {}
 timetable_weekends = {}
@@ -36,7 +36,7 @@ a_list = []
 for key, value in timetable_weekdays.items():
     for item in value:
         a_list.append([item["heading"], key, item["startStop"]])
-with open("./vacation/week.csv", "w") as f:
+with open("./vacation/week.csv", "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerows(sorted(a_list, key=lambda x: x[1]))
 
@@ -60,6 +60,6 @@ for key, value in timetable_weekends.items():
     for item in value:
         a_list.append([item["heading"], key, item["startStop"]])
 
-with open("./vacation/weekend.csv", "w") as f:
+with open("./vacation/weekend.csv", "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerows(sorted(a_list, key=lambda x: x[1]))
